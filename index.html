@@ -229,15 +229,15 @@ body { font-family: var(--font); background: var(--bg); color: var(--text); min-
 .select-custom option { background: white; color: var(--text); }
 
 /* SUBMIT */
-.btn-check {
+.btn-submit {
   width: 100%; padding: 15px; border-radius: 12px; font-family: var(--font);
   font-size: 1rem; font-weight: 700; border: none; background: var(--blue); color: white;
   cursor: pointer; transition: all 0.2s; margin-top: 4px; letter-spacing: -0.01em;
   box-shadow: 0 4px 14px rgba(37,99,235,0.28);
 }
-.btn-check:hover { background: var(--blue-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(37,99,235,0.35); }
-.btn-check:active { transform: translateY(0); }
-.btn-check:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+.btn-submit:hover { background: var(--blue-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(37,99,235,0.35); }
+.btn-submit:active { transform: translateY(0); }
+.btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
 /* ERROR */
 .error-box { display: none; background: var(--red-bg); border: 1px solid #fecaca; border-radius: 10px; padding: 13px 16px; margin-bottom: 14px; font-size: 0.87rem; color: var(--red); font-weight: 500; }
@@ -538,7 +538,7 @@ footer { text-align: center; padding: 24px 16px; font-size: 0.77rem; color: var(
       </div>
     </div>
 
-    <button class="btn-check" onclick="submitForm()">Scan &amp; Check My Score →</button>
+    <button class="btn-submit" onclick="submitForm()">Scan &amp; Check My Score →</button>
 
   </div>
 
