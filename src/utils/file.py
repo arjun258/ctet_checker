@@ -69,11 +69,28 @@ def setup_outputs_for_template(paths, template):
     ns.OUTPUT_SET = []
     ns.files_obj = {}
     TIME_NOW_HRS = strftime("%I%p", localtime())
+    
+
+
+    _custom_session = os.environ.get("OMR_SESSION_ID", None)
+    if _custom_session:
+        # Custom session ID passed by wrapper script (e.g. "Rahul_Sharma_20260313_142305")
+        _result_filename = f"Results_{_custom_session}.csv"
+    else:
+        # Fallback: second-level timestamp so each run is always unique
+        TIME_NOW_HRS = strftime("%Y%m%d_%H%M%S", localtime())
+        _result_filename = f"Results_{TIME_NOW_HRS}.csv"
+ 
     ns.filesMap = {
-        "Results": os.path.join(paths.results_dir, f"Results_{TIME_NOW_HRS}.csv"),
+        "Results": os.path.join(paths.results_dir, _result_filename),
         "MultiMarked": os.path.join(paths.manual_dir, "MultiMarkedFiles.csv"),
         "Errors": os.path.join(paths.manual_dir, "ErrorFiles.csv"),
     }
+
+
+
+
+
 
     for file_key, file_name in ns.filesMap.items():
         if not os.path.exists(file_name):
