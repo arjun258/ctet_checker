@@ -59,6 +59,17 @@ from fastapi.responses import FileResponse
 def serve_frontend():
     return FileResponse(os.path.join(os.path.dirname(__file__), "index.html"))
 
+from fastapi.responses import FileResponse
+import os
+
+@app.get("/robots.txt")
+def robots():
+    return FileResponse(os.path.join(os.path.dirname(__file__), "robots.txt"))
+
+@app.get("/sitemap.xml")
+def sitemap():
+    return FileResponse(os.path.join(os.path.dirname(__file__), "sitemap.xml"))
+
 
 @app.get("/health")
 def health():
