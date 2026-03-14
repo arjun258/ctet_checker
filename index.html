@@ -90,6 +90,7 @@ body { font-family: var(--font); background: var(--bg); color: var(--text); min-
   padding: 14px 0;
   position: sticky; top: 0; z-index: 100;
 }
+.pointer-click { cursor: pointer; }
 .navbar-brand-text { font-weight: 800; font-size: 1.05rem; color: var(--text); letter-spacing: -0.02em; }
 .navbar-brand-text span { color: var(--blue); }
 .nav-badge {
@@ -385,7 +386,7 @@ footer { text-align: center; padding: 24px 16px; font-size: 0.77rem; color: var(
 <nav class="navbar-custom">
   <div class="container-fluid px-4">
     <div class="d-flex align-items-center justify-content-between">
-      <div class="navbar-brand-text">CTET <span>OMR</span> Checker</div>
+      <div class="navbar-brand-text pointer-click" onclick="resetForm()">CTET <span>OMR</span> Checker</div>
       <div class="nav-badge">Paper II · 2026</div>
     </div>
   </div>
