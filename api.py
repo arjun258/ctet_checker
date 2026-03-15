@@ -21,9 +21,7 @@ from fastapi import FastAPI, File, Form, HTTPException, UploadFile, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
-from slowapi import Limiter, _rate_limit_exceeded_handler
-from slowapi.util import get_remote_address
-from slowapi.errors import RateLimitExceeded
+
 
 import subprocess
 
@@ -39,11 +37,10 @@ from ctet_check import (
 )
 
 # ── App setup ─────────────────────────────────────────────────
-limiter = Limiter(key_func=get_remote_address)
+
 
 app = FastAPI(title="CTET OMR Checker API", version="1.0")
-app.state.limiter = limiter
-app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+
 
 app.add_middleware(
     CORSMiddleware,
@@ -94,6 +91,7 @@ def log_result(
 # ════════════════════════════════════════════════════════════════
 # HEALTH CHECK
 # ════════════════════════════════════════════════════════════════
+
 @app.get("/health")
 def health():
     return {"status": "ok"}
@@ -103,9 +101,8 @@ def health():
 # MAIN ENDPOINT: POST /check
 # ════════════════════════════════════════════════════════════════
 @app.post("/check")
-@limiter.limit("5/minute")
+
 async def check_omr(
-    request:     Request,
     image:       UploadFile = File(...,  description="OMR sheet image (JPG/PNG)"),
     subject:     str        = Form(...,  description="math_science or social_science"),
     subject_set: str        = Form(...,  description="G, H, I, or J"),
