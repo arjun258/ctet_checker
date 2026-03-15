@@ -15,8 +15,13 @@ Local Setup
 2. Install dependencies
    cd OMRCHECKER
    pip install fastapi uvicorn python-multipart opencv-python-headless numpy pandas
+   sudo apt install xvfb (for linux)
+   Xvfb :99 -screen 0 1024x768x24 &D (for linux)
    pip install -r requirements.txt
-3. Run the API
-   python -m uvicorn api:app --host 0.0.0.0 --port 8000 --reload
-4. Open 0.0.0.0:8000 in your browser 
+4. Run the API
+   DISPLAY=:99 uvicorn api:app --host 0.0.0.0 --port 8000
+   python -m uvicorn api:app --host 0.0.0.0 --port 8000 --reload  (without xvfb)
+6. Open 0.0.0.0:8000 in your browser
+
+
 
