@@ -35,6 +35,6 @@ jobs:
     steps:
       - name: Push logs CSV
         run: |
-          git add outputs/results_log.csv
+          git add -f outputs/results_log.csv
           git commit -m "auto: update logs $(date)" || true
           git push origin main
