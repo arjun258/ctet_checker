@@ -160,13 +160,11 @@ def collect_inputs():
 def find_template(omrchecker_dir):
     candidates = [
         os.path.join(omrchecker_dir, "templates", "template.json"),
-        os.path.join(omrchecker_dir, "inputs", "CTET_TEST", "template.json"),
     ]
     for c in candidates:
         if os.path.isfile(c):
             return c
-    for match in glob.glob(os.path.join(omrchecker_dir, "inputs", "**", "template.json"), recursive=True):
-        return match
+    
     return ""
 
 
