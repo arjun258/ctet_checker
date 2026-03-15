@@ -4,19 +4,36 @@ on:
   push:
     branches:
       - main
+  schedule:
+    - cron: '0 * * * *'  # every hour
 
 jobs:
   deploy:
+    if: github.event_name == 'push'
     runs-on: self-hosted
 
     defaults:
       run:
-        working-directory: /home/mediaserver/omrchecker/OMRChecker  # ← set working dir
+        working-directory: /home/mediaserver/omrchecker/OMRChecker
 
     steps:
-      - name: pull latest code
+      - name: Pull latest code
         run: git pull origin main
 
-      - name: restart systemctl service
-        run: sudo systemctl restart ctet  # ← your command here
+      - name: Restart service
+        run: sudo systemctl restart ctet
 
+  sync_logs:
+    if: github.event_name == 'schedule'
+    runs-on: self-hosted
+
+    defaults:
+      run:
+        working-directory: /home/mediaserver/omrchecker/OMRChecker
+
+    steps:
+      - name: Push logs CSV
+        run: |
+          git add outputs/result_logs.csv
+          git commit -m "auto: update logs $(date)" || true
+          git push origin main

@@ -6,6 +6,7 @@
 # Everything in inputs/ and outputs/
 inputs/**
 outputs/**
+!outputs/logs.csv
 
 /sample
 
