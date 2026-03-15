@@ -631,6 +631,7 @@ function handleFile(file) {
 
 async function submitForm() {
   hideError();
+  window.scrollTo({ top: 0, behavior: 'smooth' })
   const subject    = document.getElementById('subject').value;
   const subjectSet = document.getElementById('subjectSet').value;
   const lang1      = document.getElementById('lang1').value;
