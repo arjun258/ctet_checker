@@ -1,0 +1,3 @@
+timestamp,session_id,subject,subject_set,lang1,lang1_set,lang2,lang2_set,score_subject,score_lang1,score_lang2,total,max,percentage,passed
+2026-03-16 03:05:02,20260316_030501_2de27dcb4c,math_science,H,English,H,Hindi,H,65,22,20,107,150,71.3,True
+2026-03-16 03:21:19,20260316_032118_f48d6911a2,math_science,H,English,H,Hindi,H,65,22,20,107,150,71.3,True
